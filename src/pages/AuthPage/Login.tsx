@@ -1,44 +1,37 @@
-import { Alert, AlertIcon, Button, Input, VStack } from "@chakra-ui/react";
+import { Input, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import CommonInput from "../../components/CommonInput";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate()
+  
+  const handleAuth = () => {
+    console.log(inputs)
+    navigate("/")
+  }
+
   return (
     <VStack flexDirection={"column"}>
-      <Input
-        placeholder="Work Email"
-        _placeholder={{ opacity: 0.2, color: "#4e4b52" }}
-        borderColor={"#4e4b52"}
-        fontSize={14}
+      <CommonInput
+        placeholder="Work email"
         type="email"
         size={"sm"}
         value={inputs.email}
         onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
       />
-      <Input
+      <CommonInput
         placeholder="Password"
-        _placeholder={{ opacity: 0.2, color: "#4e4b52" }}
-        borderColor={"#4e4b52"}
-        fontSize={14}
         type="password"
         size={"sm"}
         value={inputs.password}
         onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
       />
-
-      <Button
-        w={"full"}
-        _hover={{ opacity: "0.5" }}
-        backgroundColor="#4e4b52"
-        size={"sm"}
-        fontSize={14}
-      >
-        Log In
-      </Button>
     </VStack>
   );
 };
