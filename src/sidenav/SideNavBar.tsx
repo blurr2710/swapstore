@@ -71,20 +71,15 @@ const ProductFilterList = () => {
   
 export const SideNavBar = () => {
   return (
-    <VStack
-      display={{ base: "none", lg: "flex" }}
-      flex={1}
-      bg="red.200"
-      justify="center"
-      align="center"
-      p={4}
-    >
-      <Button colorScheme="blue" mb={4}>
-        Current workspace
-      </Button>
-      <Box flex={1} w="full" maxH="calc(100vh - 100px)">
-          <ProductFilterList />
-    </Box>
-    </VStack>
+<VStack
+  display={{ base: "none", lg: "flex" }}
+  className="sidenavbar"
+>
+  <Box width={"100%"}>
+    <Button>
+      test
+    </Button>
+  </Box>
+</VStack>
   );
 };

@@ -69,4 +69,20 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.sidenavbar {
+  flex: 1;
+  height: 100vh;
+  align-items: flex-end;  /* Ensures items are aligned to the left horizontally */
+  justify-content: top;
+}
 
+.page-footer {
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  padding-top: 50px;
+}
+
+.homepage {
+  background: #fcfbf9;
+}
