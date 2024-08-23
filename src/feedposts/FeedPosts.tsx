@@ -2,36 +2,36 @@ import React from 'react';
 import { VStack, Text } from '@chakra-ui/react';
 import FeedPost from '../feedposts/FeedPost'
 import { SellBar } from '../sellinputbar/SellBar';
-
+import MapComponent from '../map/MapComponent';
 const FeedPosts = () => {
   const posts = [
     {
       id: 1,
-      imageURL: "https://picsum.photos/468/468",
+      imageURL: "https://picsum.photos/200/200",
       creator: "John Doe",
       createdAt: "2023-08-19",
     },
     {
       id: 2,
-      imageURL: "https://picsum.photos/468/468",
+      imageURL: "https://picsum.photos/200/200",
       creator: "Jane Smith",
       createdAt: "2023-08-20",
     },
     {
       id: 3,
-      imageURL: "https://picsum.photos/468/468",
+      imageURL: "https://picsum.photos/200/200",
       creator: "Jane Smith",
       createdAt: "2023-08-20",
     },
     {
       id: 4,
-      imageURL: "https://picsum.photos/468/468",
+      imageURL: "https://picsum.photos/200/200",
       creator: "Jane Smith",
       createdAt: "2023-08-20",
     },
     {
       id: 5,
-      imageURL: "https://picsum.photos/468/468",
+      imageURL: "https://picsum.photos/200/200",
       creator: "Jane Smith",
       createdAt: "2023-08-20",
     }
@@ -40,7 +40,7 @@ const FeedPosts = () => {
   return (
     <VStack
       justify="top"
-      align="center"
+      align="left"
       width={"100%"}
       height="100vh"
       overflowY="auto"
@@ -56,9 +56,6 @@ const FeedPosts = () => {
     >
       <SellBar/>
 
-      <Text>
-        Trending products
-      </Text>
       {posts.map((post) => (
         <FeedPost post={post}/>
       ))}

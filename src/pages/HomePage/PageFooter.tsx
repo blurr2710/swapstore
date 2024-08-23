@@ -14,7 +14,6 @@ const rotateAnimation = keyframes`
 export const PageFooter = () => {
   return (
     <HStack className="page-footer">
-       <Button>workspace</Button>
     </HStack>
   );
 };

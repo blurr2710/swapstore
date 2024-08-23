@@ -1,10 +1,10 @@
 import React from 'react';
-import { HStack, IconButton, Tooltip } from '@chakra-ui/react';
+import { HStack, IconButton, Tooltip, VStack } from '@chakra-ui/react';
 import { EmailIcon, StarIcon, ChatIcon } from '@chakra-ui/icons';
 
 export const InboxFooter = () => {
   return (
-    <HStack spacing={20} padding={4} justify="center" borderTopWidth={"2px"} borderColor={"#e6e1da"} width={"100%"}>
+    <VStack spacing={20} padding={4} justify="center" width={"100%"}>
       {/* Inbox Icon Button with Tooltip */}
       <Tooltip label="Inbox" placement="top" hasArrow>
         <IconButton
@@ -43,6 +43,6 @@ export const InboxFooter = () => {
           transition="all 0.2s ease-in-out" // Smooth transition for the hover effect
         />
       </Tooltip>
-    </HStack>
+    </VStack>
   );
 };
