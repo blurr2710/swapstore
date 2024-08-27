@@ -1,51 +1,38 @@
-import React from "react";
-import {
-  VStack,
-  Image,
-  HStack,
-  keyframes,
-  Text,
-  IconButton,
-} from "@chakra-ui/react";
+import React, { useState } from "react";
+import { VStack, HStack, Fade } from "@chakra-ui/react";
 import FeedPosts from "../../feedposts/FeedPosts";
-import { PageFooter } from "./PageFooter";
-import { MessageItem } from "./MessageItem";
-import { SearchIcon } from "@chakra-ui/icons"; // Import the search icon from Chakra UI
-import { InboxFooter } from "./InboxFooter";
+import { LeftNavigationBar } from './LeftNavigationBar';
 import MapComponent from "../../map/MapComponent";
+import { Inbox } from "../../inbox/Inbox";
 
-const rotateAnimation = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
+
 const Homepage = () => {
+  const [buttonClicked, setButtonClicked] = useState<string>("");
+
+  const handleChatClick = (buttonType) => {
+    setButtonClicked(buttonType); // Show the message inbox page when chat icon is clicked
+  };
+
+  const handleBackClick = () => {
+    setButtonClicked(""); // Return to InboxFooter
+  };
+
+  const renderLeftWindow = () => {
+    console.log("buttas", buttonClicked)
+    switch (buttonClicked) {
+      case "inbox":
+        return <Inbox onChatClick={handleBackClick} />;
+      case "map":
+        return <MapComponent />;
+      default:
+        return <LeftNavigationBar onChatClick={handleChatClick}/>
+      }
+  };
+
   return (
     <HStack height={"100vh"} backgroundColor={"#fcfbf9"}>
       {/*left window inbox*/}
-      <VStack
-        height={"100%"}
-        width={"5%"}
-        borderColor={"#e6e1da"}
-        borderWidth={"2px"}
-        backgroundColor={"#fcfbf9"}
-        display={{ base: "none", md: "flex" }} // Hide on small screens (base) and show on medium (md) screens and up
-      >
-        <Image
-          src="/singularity.png" // Replace with your logo's path
-          alt="Logo"
-          maxWidth="100" // Set the maximum width
-          maxHeight="100px" // Set the maximum height
-          objectFit="contain"
-          paddingY={"15px"}
-          animation={`${rotateAnimation} 10s linear infinite`} // Apply the rotation animation
-        />
-        <InboxFooter/>
-      </VStack>
-      
+      {renderLeftWindow()} {/* <-- This is how you execute the function */}
       {/*right window page*/}
       <VStack
         justifyContent={"left"}

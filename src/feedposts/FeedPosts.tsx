@@ -7,31 +7,31 @@ const FeedPosts = () => {
   const posts = [
     {
       id: 1,
-      imageURL: "https://picsum.photos/200/200",
+      imageURL: "https://picsum.photos/300/300",
       creator: "John Doe",
       createdAt: "2023-08-19",
     },
     {
       id: 2,
-      imageURL: "https://picsum.photos/200/200",
+      imageURL: "https://picsum.photos/300/300",
       creator: "Jane Smith",
       createdAt: "2023-08-20",
     },
     {
       id: 3,
-      imageURL: "https://picsum.photos/200/200",
+      imageURL: "https://picsum.photos/300/300",
       creator: "Jane Smith",
       createdAt: "2023-08-20",
     },
     {
       id: 4,
-      imageURL: "https://picsum.photos/200/200",
+      imageURL: "https://picsum.photos/300/300",
       creator: "Jane Smith",
       createdAt: "2023-08-20",
     },
     {
       id: 5,
-      imageURL: "https://picsum.photos/200/200",
+      imageURL: "https://picsum.photos/300/300",
       creator: "Jane Smith",
       createdAt: "2023-08-20",
     }

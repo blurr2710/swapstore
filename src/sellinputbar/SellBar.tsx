@@ -1,11 +1,11 @@
 import React from 'react';
-import { Flex, InputGroup, Input, InputRightElement, IconButton, Button, Icon  } from '@chakra-ui/react';
+import { Flex, InputGroup, Input, InputRightElement, IconButton, Button, Icon,Text  } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons'; // Using a general add icon as a substitute for a sell icon
 import { FiFilter } from "react-icons/fi";
 
 export const SellBar = () => {
   return (
-    <Flex alignItems={"center"} gap={2} justifyContent={"space-between"} w={"60%"} marginY={"30px"}>
+    <Flex alignItems={"center"} gap={2} justifyContent={"space-between"} w={"100%"} marginY={"30px"}> 
       <InputGroup
         border="2px"
         borderColor="gray.300" // Initial border color
@@ -35,7 +35,7 @@ export const SellBar = () => {
       </InputGroup>
       <Button
         backgroundColor={"#f75709"}
-        size="md"
+        size="sm"
         className='paragraph'
         textColor={"white"}
         borderRadius="md"
