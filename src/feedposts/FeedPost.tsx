@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Image,
-  Flex,
   Text,
   HStack,
   VStack,
   IconButton,
   Icon,
+  Avatar,
+  Divider,
+  AspectRatio,
   Circle,
+  Button,
 } from "@chakra-ui/react";
-import { FiMapPin, FiTag, FiHeart, FiShare2, FiArrowRight } from "react-icons/fi";
-import { FaRupeeSign } from "react-icons/fa";
+import {
+  FiHeart,
+  FiShare2,
+} from "react-icons/fi";
 import { CommentBar } from "./CommentBar";
+import { FaDollarSign, FaRupeeSign, FaShoppingCart } from "react-icons/fa";
+import { CommonButton } from "../components/CommonButton";
 
-// Helper function to get the color for each circle
+const images = ["p1.jpg", "p2.jpg", "p3.jpg", "p4.jpg"];
+const getRandomImage = () => {
+  const randomIndex = Math.floor(Math.random() * images.length);
+  return "product_images/" + images[randomIndex];
+};
+
 const getColor = (index: number) => {
   const colors = [
     "red.500",
@@ -29,160 +41,133 @@ const getColor = (index: number) => {
 const rating = 4.1;
 
 const FeedPost: React.FC<{ post: any }> = ({ post }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const randomImage = getRandomImage();
+
   return (
     <Box
       key={post.id}
       bg="white"
-      borderRadius="20px"
-      boxShadow="0 0 10px 5px #f7580955" // Glowy shadow border
-      padding={"20px"}
-      textColor={"black"}
-      maxWidth="3xl"
-      margin={"20px"}
-      // Responsive width and padding
-      width={{ base: "100%", md: "auto" }}
-      padding={{ base: "10px", md: "20px" }}
+      borderRadius="10px"
+      boxShadow="sm"
+      className="smallheading"
+      padding="20px"
+      margin="20px auto"
+      width="60%"
     >
-      <Flex
-        direction={{ base: "column", md: "row" }}
-        align={{ base: "center", md: "start" }}
-      >
-        <Box
-          position="relative"
-          width={{ base: "100%", md: "200px" }}
-          height={{ base: "auto", md: "200px" }}
-          mb={{ base: "10px", md: "0" }}
-        >
+      {/* Header with Avatar, Name, and Headline */}
+      <HStack spacing="3" mb="4">
+        <Avatar name={post.creator} src={post.creatorAvatar} />
+        <VStack align="start" spacing="1">
+          <Text fontWeight="bold" fontSize="md">
+            Abhinav Vashisht
+          </Text>
+          <Text fontSize="xs" color="gray.400">
+            12 Aug 2022
+          </Text>
+        </VStack>
+      </HStack>
+
+      {/* Post Content */}
+      <Box mb="4" position="relative">
+        <AspectRatio ratio={4 / 3} borderRadius="12px" overflow="hidden">
           <Image
-            src={post.imageURL}
+            src={randomImage}
             alt={`Post by ${post.creator}`}
-            borderRadius={"12px"}
-            maxHeight={{ base: "300px", md: "200px" }}
-            maxWidth={{ base: "100%", md: "200px" }}
-            height="auto"
             width="100%"
+            height="100%"
           />
-          {/* Overlay Icons */}
-          <IconButton
-            icon={<FiHeart />}
-            aria-label="Add to Favorites"
-            position="absolute"
-            top="10px"
-            right="10px"
-            bg="rgba(255, 255, 255, 0.7)"
-            borderRadius="50%"
-            _hover={{ bg: "#f75809b3" }}
-          />
-          <IconButton
-            icon={<FiArrowRight />}
-            aria-label="Arrow"
-            position="absolute"
-            top="calc(50% - 20px)" // Center vertically with some offset
-            right="10px"
-            bg="rgba(255, 255, 255, 0.7)"
-            borderRadius="50%"
-            _hover={{ bg: "#f75809b3" }}
-          />
-          <IconButton
-            icon={<FiShare2 />}
-            aria-label="Share"
-            position="absolute"
-            bottom="10px"
-            right="10px"
-            bg="rgba(255, 255, 255, 0.7)"
-            borderRadius="50%"
-            _hover={{ bg: "#f75809b3" }}
-          />
-        </Box>
-        <HStack
-          align="start"
-          spacing={{ base: "0", md: "10px" }}
-          direction={{ base: "column", md: "row" }}
-          width="full"
+        </AspectRatio>
+        <IconButton
+          icon={<FiHeart />}
+          aria-label="Add to Favorites"
+          position="absolute"
+          top="10px"
+          right="10px"
+          bg="rgba(255, 255, 255, 0.8)"
+          borderRadius="50%"
+          _hover={{ bg: "#f75809b3" }}
+        />
+        <IconButton
+          icon={<FiShare2 />}
+          aria-label="Share Post"
+          position="absolute"
+          bottom="10px"
+          right="10px"
+          bg="rgba(255, 255, 255, 0.8)"
+          borderRadius="50%"
+          _hover={{ bg: "#f75809b3" }}
+        />
+      </Box>
+      <Box>
+        <Text
+          noOfLines={isExpanded ? undefined : 3}
+          display="-webkit-box"
+          overflow="hidden"
+          textOverflow="ellipsis"
+          whiteSpace="pre-wrap"
+          wordBreak="break-word"
+          style={{
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: isExpanded ? "none" : 3,
+          }}
         >
-          <VStack
-            align="start"
-            spacing="4"
-            width={{ base: "80%", md: "50%" }}
-            maxWidth={{ base: "100%", md: "50%" }}
-            borderRightWidth={{ base: "0", md: "2px" }}
-            borderColor={"#e6e1da"}
-            paddingRight={{ base: "0", md: "10px" }}
-            mb={{ base: "10px", md: "0" }}
-          >
-            <Box>
-              <Text
-                fontWeight={"800"}
-                paddingLeft={{ base: "0", md: "10px" }}
-                fontSize={{ base: "lg", md: "md" }}
+          Selling this random sofa that is very comfortable and stylish. It
+          comes with a modern design and high-quality materials. Perfect for any
+          living room or office space. Don't miss out on this amazing deal!
+        </Text>
+        <Button
+          size="sm"
+          mt="2"
+          variant="link"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? "Show less" : "More"}
+        </Button>
+      </Box>
+
+      <Divider mb="4" />
+
+      <HStack width={"100%"} justifyContent="space-between">
+        <VStack>
+          <Box display={"flex"} padding={"10px"}>
+            <HStack spacing={2}>
+              {[...Array(5)].map((_, index) => (
+                <Circle
+                  key={index}
+                  size="10px"
+                  bg={index < rating ? getColor(index) : "gray.300"}
+                />
+              ))}
+              <Box
+                bg="green.500"
+                color="white"
+                padding="4px 8px"
+                borderRadius="md"
               >
-                Seller Name
-              </Text>
-            </Box>
-
-            <Box display="flex" alignItems="center" paddingLeft={{ base: "0", md: "10px" }}>
-              <Icon as={FiMapPin} w={4} h={4} color="red.500" />
-              <Text ml={2} fontSize={{ base: "sm", md: "md" }}>
-                Location of the item
-              </Text>
-            </Box>
-
-            <Text
-              paddingLeft={{ base: "0", md: "10px" }}
-              fontSize={{ base: "sm", md: "14px" }}
-            >
-              Product description Product description Product description
-              Product description Product description Product description
-              Product description Product description Product description
-
-              Product description Product description Product description
-              Product description Product description Product description
-            </Text>
-          </VStack>
-
-          <VStack
-            width={{ base: "50%", md: "50%" }}
-            maxWidth={{ base: "100%", md: "50%" }}
-            paddingRight={{ base: "0", md: "10px" }}
-          >
-            <Box display={"flex"} padding={"10px"} flexDirection={{ base: "column", md: "row" }}>
-              <HStack spacing={2} mb={{ base: "10px", md: "0" }}>
-                {/* Multicolored Circles */}
-                {[...Array(5)].map((_, index) => (
-                  <Circle
-                    key={index}
-                    size="10px"
-                    bg={index < rating ? getColor(index) : "gray.300"}
-                  />
-                ))}
-
-                {/* Green Box with Rating */}
-                <Box
-                  bg="green.500"
-                  color="white"
-                  padding="4px 8px"
-                  borderRadius="md"
-                >
-                  <Text fontWeight="bold">{rating}</Text>
-                </Box>
-              </HStack>
-            </Box>
-            <HStack spacing={2} alignItems="center">
-              <Icon as={FaRupeeSign} w={5} h={5} color="green.500" />
-              <Text fontSize={{ base: "lg", md: "lg" }} fontWeight="bold">
-                12,000
-              </Text>
+                <Text fontWeight="bold">{rating}</Text>
+              </Box>
             </HStack>
-          </VStack>
+          </Box>
+          <HStack spacing={2} alignItems="center">
+            <Icon as={FaRupeeSign} w={5} h={5} color="green.500" />
+            <Text fontWeight="bold">12,000</Text>
+          </HStack>
+        </VStack>
+        <VStack>
+        <CommonButton 
+          text="Offer a price" 
+          icon={FaDollarSign}
+        />
+        <CommonButton 
+          text="Buy Now" 
+          icon={FaShoppingCart} 
+        />     
+      </VStack>
+      </HStack>
 
-        </HStack>
-      </Flex>
-      <Text
-        paddingTop={"10px"}
-        fontSize={{ base: "sm", md: "12px" }}
-        color={"grey"}
-      >
-        View All comments
+      <Text mt="4" fontSize="sm" color="gray.500">
+        View all comments
       </Text>
       <CommentBar />
     </Box>

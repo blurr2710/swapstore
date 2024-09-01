@@ -4,7 +4,7 @@ import { AddIcon } from '@chakra-ui/icons'; // Using a general add icon as a sub
 
 export const CommentBar = () => {
   return (
-    <Flex alignItems={"center"} gap={2} justifyContent={"space-between"} w={"80%"} marginY={"10px"}>
+    <Flex alignItems={"center"} gap={2} justifyContent={"space-between"} w={"100%"} marginY={"10px"}>
       <InputGroup
         border="2px"
         borderColor="gray.300" // Initial border color

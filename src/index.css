@@ -91,3 +91,20 @@
 .homepage {
   background: #fcfbf9;
 }
+
+.custom-select {
+  font-size: 16px; /* Adjust font size */
+  color: #333; /* Adjust text color */
+}
+
+.custom-select option {
+  color: #333; /* Adjust text color for options */
+}
+
+
+.map-container {
+  height: 500px;
+  width: 50%;
+  border: 2px solid black;
+  border-radius: 20px;
+}

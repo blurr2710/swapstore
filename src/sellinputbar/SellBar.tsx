@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Flex, InputGroup, Input, InputRightElement, IconButton, Button, Icon,Text  } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons'; // Using a general add icon as a substitute for a sell icon
 import { FiFilter } from "react-icons/fi";
+import SellWindow from './SellWindow';
 
 export const SellBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const openPostWindow = () => setIsOpen(true);
+  const closePostWindow = () => {console.log("closing window")
+    setIsOpen(false);}
+  
   return (
     <Flex alignItems={"center"} gap={2} justifyContent={"space-between"} w={"100%"} marginY={"30px"}> 
       <InputGroup
@@ -26,6 +32,7 @@ export const SellBar = () => {
             aria-label="Sell"
             icon={<AddIcon />} // Replace with an appropriate sell icon if available
             fontSize={16}
+            onClick={openPostWindow}
             color={"#f75809b3"}
             _hover={{ color: "white", bg: "#f75709" }} // Change icon color and background on hover
             bg={"transparent"}
@@ -49,6 +56,7 @@ export const SellBar = () => {
       >
         All filters
       </Button>
+      <SellWindow isOpen={isOpen} handleClosePostWindow={closePostWindow}/>
     </Flex>
   );
 };
