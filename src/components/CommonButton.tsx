@@ -11,15 +11,15 @@ interface CommonButtonProps {
 export const CommonButton: React.FC<CommonButtonProps> = ({ icon, text, ...rest }) => {
   return (
     <Button
-      backgroundColor={"#f75709"}
+      backgroundColor={"#8947fd"}
       size="sm"
       className='paragraph'
       textColor={"white"}
       borderRadius="md"
       rightIcon={icon ? <Icon as={icon} w={5} h={5} /> : undefined} // Use undefined instead of null
       _hover={{
-        bg: " #f75709", // Change button color on hover
-        boxShadow: "0 0 15px #f75709", // Glow effect
+        bg: " #8947fd", // Change button color on hover
+        boxShadow: "0 0 15px #8947fd", // Glow effect
         transform: "scale(1.05)" // Slightly increase size on hover
       }}
       transition="all 0.3s ease" // Smooth transition for hover effects

@@ -158,6 +158,7 @@ const SellWindow: React.FC<SellWindowProps> = ({
         height={{ base: "70%", md: "60%", lg: "60%" }} // Responsive height
         maxHeight={{ base: "70%", md: "60%", lg: "60%" }} // Responsive max height
         maxWidth={{ base: "90%", md: "60%", lg: "40%" }} // Responsive max width
+        border="1px solid #8947fd"
       >
         <HStack justifyContent="space-between">
           <Box fontWeight="bold">Create a Post</Box>

@@ -121,7 +121,7 @@ const InboxPage: React.FC = () => {
           flex={1}
           placeholder="Type a message..."
         />
-        <Button backgroundColor={"#f75709"}>
+        <Button backgroundColor={"#8947fd"}>
           Send
         </Button>
       </HStack>

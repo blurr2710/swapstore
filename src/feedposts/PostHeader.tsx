@@ -11,7 +11,7 @@ const PostHeader = ({ post }) => {
 	return (
 		<Flex justifyContent={"space-between"} alignItems={"center"} my={2}>
 			<Flex alignItems={"center"} gap={2}>
-			<Avatar name="Profile Name" src="path-to-image.jpg" boxSize={"40px"} bg={"#f75709"}/>
+			<Avatar name="Profile Name" src="path-to-image.jpg" boxSize={"40px"} bg={"#8947fd"}/>
 			<Flex fontSize={12} fontWeight={"bold"} gap='2'>
 						<Text>Profile Name</Text>
 					<Box color={"gray.500"}>• 20s</Box>

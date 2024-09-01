@@ -3,20 +3,26 @@ import { Flex, InputGroup, Input, InputRightElement, IconButton, Button, Icon,Te
 import { AddIcon } from '@chakra-ui/icons'; // Using a general add icon as a substitute for a sell icon
 import { FiFilter } from "react-icons/fi";
 import SellWindow from './SellWindow';
+import FilterWindow from '../filterWindow/filterWindow';
 
 export const SellBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openPostWindow = () => setIsOpen(true);
   const closePostWindow = () => {console.log("closing window")
     setIsOpen(false);}
-  
+
+
+  const [isFilterWindowOpen, setFilterWindowOpen] = useState(false);
+  const openFilterWindow = () => setFilterWindowOpen(true);
+  const closeFilterWindow = () => setFilterWindowOpen(false);
+
   return (
     <Flex alignItems={"center"} gap={2} justifyContent={"space-between"} w={"100%"} marginY={"30px"}> 
       <InputGroup
         border="2px"
         borderColor="gray.300" // Initial border color
         borderRadius="lg" // Border radius for rounded corners
-        _hover={{ borderColor: "#f75709", backgroundColor:"gray.300"  }} // Darker border color on hover
+        _hover={{ borderColor: "#8947fd", backgroundColor:"gray.300"  }} // Darker border color on hover
         backgroundColor={"gray.100"}
         transition="border-color 0.2s ease-in-out" // Smooth transition for border color
       >
@@ -34,22 +40,23 @@ export const SellBar = () => {
             fontSize={16}
             onClick={openPostWindow}
             color={"#f75809b3"}
-            _hover={{ color: "white", bg: "#f75709" }} // Change icon color and background on hover
+            _hover={{ color: "white", bg: "#8947fd" }} // Change icon color and background on hover
             bg={"transparent"}
             border="none" // Remove default button border
           />
         </InputRightElement>
       </InputGroup>
       <Button
-        backgroundColor={"#f75709"}
+        backgroundColor={"#8947fd"}
         size="sm"
         className='paragraph'
         textColor={"white"}
         borderRadius="md"
+        onClick={openFilterWindow}
         rightIcon={<Icon as={FiFilter} w={5} h={5} />}
         _hover={{
-          bg: " #f75709", // Change button color on hover
-          boxShadow: "0 0 15px #f75709", // Glow effect
+          bg: " #8947fd", // Change button color on hover
+          boxShadow: "0 0 15px #8947fd", // Glow effect
           transform: "scale(1.05)" // Optional: slightly increase size on hover
         }}
         transition="all 0.3s ease" // Smooth transition for hover effects
@@ -57,6 +64,7 @@ export const SellBar = () => {
         All filters
       </Button>
       <SellWindow isOpen={isOpen} handleClosePostWindow={closePostWindow}/>
+      <FilterWindow isOpen={isFilterWindowOpen} handleClosePostWindow={closeFilterWindow}/>
     </Flex>
   );
 };

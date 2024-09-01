@@ -9,7 +9,7 @@ export const CommentBar = () => {
         border="2px"
         borderColor="gray.300" // Initial border color
         borderRadius="md" // Border radius for rounded corners
-        _hover={{ borderColor: "#f75709",backgroundColor:"gray.300" }} // Darker border color on hover
+        _hover={{ borderColor: "#8947fd",backgroundColor:"gray.300" }} // Darker border color on hover
         transition="border-color 0.2s ease-in-out" // Smooth transition for border color
         backgroundColor={"gray.100"}
       >
@@ -26,7 +26,7 @@ export const CommentBar = () => {
             icon={<AddIcon />} // Replace with an appropriate sell icon if available
             fontSize={14}
             color={"#f75809b3"}
-            _hover={{ color: "white", bg: "#f75709" }} // Change icon color and background on hover
+            _hover={{ color: "white", bg: "#8947fd" }} // Change icon color and background on hover
             bg={"transparent"}
             border="none" // Remove default button border
           />

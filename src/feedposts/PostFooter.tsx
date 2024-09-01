@@ -78,7 +78,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
           borderBottom={"2px"}
           borderColor="gray.300" // Initial border color
           borderRadius="md" // Border radius for rounded corners
-          _hover={{ borderColor: "#f75709" }} // Darker border color on hover
+          _hover={{ borderColor: "#8947fd" }} // Darker border color on hover
           transition="border-color 0.2s ease-in-out" // Smooth transition for border color
         >
           <Input
